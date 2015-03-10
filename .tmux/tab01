@@ -1,0 +1,27 @@
+#new-window -n tab
+
+# Vertical split
+split-window -h -d
+# Move Right Pane
+select-pane -R
+
+# Horizontal split
+split-window -d
+# Move Under Pane
+select-pane -D
+
+# Horizontal split
+splitw -d
+# Move Under Pane
+select-pane -D
+
+split-window -h -d
+# Move Right Pane
+select-pane -R
+
+# Display Clock
+clock-mode
+
+# Move Left Pane
+select-pane -L
+select-pane -L

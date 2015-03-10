@@ -1,0 +1,57 @@
+#!/usr/bin perl
+use strict;
+use warnings;
+
+sub copy
+{
+	my ($self) = @_;
+
+	my $elite = $self->locale_encode($self->selection);
+	if ($elite) {
+		my $EOF = time();
+		$EOF .= '0' while ($elite =~ /$EOF/);
+		system ("cat<<$EOF | xsel -bi\n$elite\n$EOF\n");
+	} else {
+		system ("xsel | xsel -bi");
+	}
+
+	()
+}
+
+sub paste
+{
+	my ($self) = @_;
+
+	open (XSEL, '-|', qw/xsel -b/) or die $!;
+	while (<XSEL>) {
+		$self->tt_write ($self->locale_encode ($_));
+	}
+	close XSEL;
+
+	()
+}
+
+sub paste_selected
+{
+	my ($self) = @_;
+
+	my $elite = $self->locale_encode($self->selection);
+	$self->tt_write ($self->locale_encode ($elite)) if ($elite);
+
+	()
+}
+
+sub on_user_command
+{
+	my ($self, $cmd) = @_;
+
+	if ($cmd eq "urxvt-xsel:copy") {
+		$self->copy;
+	} elsif ($cmd eq "urxvt-xsel:paste") {
+		$self->paste;
+	} elsif ($cmd eq "urxvt-xsel:paste_selected") {
+		$self->paste_selected;
+	}
+
+	()
+}

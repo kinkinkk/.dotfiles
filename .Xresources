@@ -1,0 +1,82 @@
+!-------------------------------------------------------------------------------
+! URxvt settings
+!-------------------------------------------------------------------------------
+URxvt.depth: 32
+URxvt.geometry: 90x30
+URxvt.transparent: false
+URxvt.fading: 0
+! URxvt.urgentOnBell: true
+! URxvt.visualBell: true
+URxvt.loginShell: true
+URxvt.saveLines: 10000
+URxvt.internalBorder: 3
+URxvt.lineSpace: 0
+! Font
+URxvt.allow_bold: true
+URxvt.font: xft:Ricty\ for\ Powerline:size=12.5:antialias=true
+! Fix font space
+!URxvt*letterSpace: -1
+! Scrollbar
+URxvt.scrollStyle: rxvt
+URxvt.scrollBar: false
+! Perl extensions
+!!URxvt.perl-ext-common: default,tabbedex,clipboard
+!!URxvt.matcher.button: 1
+!!URxvt.urlLauncher: google-chrome
+!!URxvt.keysym.M-t: perl:tabbedex:new_tab
+!!URxvt.keysym.M-n: perl:tabbedex:next_tab
+!!URxvt.keysym.M-p: perl:tabbedex:prev_tab
+!!URxvt.tabbed.no-tabbedex-keys: true
+!!URxvt.tabbed.not-consumable-keys: 0xff22, 0xff23, 0xff2a
+! Cursor
+URxvt.cursorBlink: false
+URxvt.cursorColor: #ff99ff
+URxvt.cursorUnderline: false
+! Pointer
+URxvt.pointerBlank: true
+! iso 14755 disable
+URxvt*iso14755: false
+! Color
+urxvt*shading: 80
+URxvt*inheritPixmap: true
+!URxvt*inheritPixmap: false
+! Molokai
+!!Source https://github.com/brianbuccola/dotfiles/blob/master/xcolors/molokai
+! vim: set ft=xdefaults:
+!URxvt*background: #000000
+!URxvt*foreground: #d0d0d0
+URxvt.foreground: rgba:ffff/ffff/ffff/ffff
+URxvt.background: rgba:0000/0000/1111/aaaa
+URxvt*colorBD: #3579a8
+URxvt*colorUL: #4eb4fa
+!black
+URxvt*color0: #000000
+URxvt*color8: #1c1c1c
+!red
+URxvt*color1: #960050
+URxvt*color9: #ff0090
+!green
+URxvt*color2: #66aa11
+URxvt*color10: #80ff00
+!yellow
+URxvt*color3: #c47f2c
+URxvt*color11: #ffba68
+!blue
+URxvt*color4: #30309b
+URxvt*color12: #5f5fee
+!magenta
+URxvt*color5: #7e40a5
+URxvt*color13: #bb88dd
+!cyan
+URxvt*color6: #3579a8
+URxvt*color14: #4eb4fa
+!white
+URxvt*color7: #5f5f5f
+URxvt*color15: #d0d0d0
+
+urxvt*preeditType: OffTheSpot
+! rxvt-unicode milkjfフォントを使用(半角カタカナが化ける?)
+!urxvt*font:\
+![codeset=ISO8859]x:-milkjf-*-medium-*-*-*-16-*-*-*-*-*-iso8859-1,\
+![codeset=JISX0201]x:-milkjf-*-medium-r-*-*-16-*-*-*-*-*-jisx0201.1976-0,\
+![codeset=JISX0208]x:-milkjf-*-medium-*-*-*-16-*-*-*-*-160-jisx0208.1990-0
