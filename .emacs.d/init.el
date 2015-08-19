@@ -23,7 +23,19 @@
  '(default ((t (:family "Ricty for Powerline" :foundry "unknown" :slant normal :weight normal :height 108 :width normal)))))
 
 ;; 追加el読み込みディレクトリ
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
+;;(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(setq load-path
+	  (append
+	   (list
+		(expand-file-name "~/.emacs.d/site-lisp/") ;追加
+		(expand-file-name "~/.emacs.d/auto-install/"))
+	          load-path))
+
+;; autoインストールを使う際はコメントアウトを削除
+;;(require 'auto-install)
+;;(setq auto-install-directory "~/.emacs.d/auto-install/")
+;;(auto-install-update-emacswiki-package-name t)
+;;(auto-install-compatibility-setup)             ; 互換性確保
 
 ;; auto-complete
 (require 'auto-complete)
@@ -63,17 +75,52 @@
     (kbd "C-x C-a") 'hs-toggle-hiding)
 
 ;;php-mode
-(load "php-mode")
+(require 'php-mode)
+(setq php-mode-force-pear t) ;PEAR規約のインデント設定にする
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode)) ;*.phpのファイルのときにphp-modeを自動起動する
+
+(add-hook 'php-mode-hook
+		  (lambda ()
+			(require 'php-completion)
+			(php-completion-mode t)
+			(define-key php-mode-map (kbd "C-q") 'phpcmp-complete)
+			(when (require 'auto-complete nil t)
+			  (make-variable-buffer-local 'ac-sources)
+			  (add-to-list 'ac-sources 'ac-source-php-completion)
+			               (auto-complete-mode t))))
 
 
-
-
-
-
-
-
-
-
-
+;; タブバー
+(require 'tabbar)
+(tabbar-mode)
+(global-set-key "\M-]" 'tabbar-forward)  ; 次のタブ
+(global-set-key "\M-[" 'tabbar-backward) ; 前のタブ
+;; タブ上でマウスホイールを使わない
+(tabbar-mwheel-mode nil)
+;; グループを使わない
+(setq tabbar-buffer-groups-function nil)
+;; 左側のボタンを消す
+(dolist (btn '(tabbar-buffer-home-button
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
+  (set btn (cons (cons "" nil)
+                 (cons "" nil))))
+;; 色設定
+(set-face-attribute ; バー自体の色
+  'tabbar-default nil
+   :background "gray"
+   :family "Inconsolata"
+   :height 1.0)
+(set-face-attribute ; アクティブなタブ
+  'tabbar-selected nil
+   :background "yellow"
+   :foreground "red"
+   :weight 'bold
+   :box nil)
+(set-face-attribute ; 非アクティブなタブ
+  'tabbar-unselected nil
+   :background "gray"
+   :foreground "black"
+   :box nil)
 
 
