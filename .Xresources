@@ -2,7 +2,7 @@
 ! URxvt settings
 !-------------------------------------------------------------------------------
 URxvt.depth: 32
-URxvt.geometry: 90x30
+URxvt.geometry: 120x45
 URxvt.transparent: false
 URxvt.fading: 0
 ! URxvt.urgentOnBell: true

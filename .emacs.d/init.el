@@ -105,22 +105,30 @@
                tabbar-scroll-right-button))
   (set btn (cons (cons "" nil)
                  (cons "" nil))))
-;; 色設定
-(set-face-attribute ; バー自体の色
-  'tabbar-default nil
-   :background "gray"
-   :family "Inconsolata"
-   :height 1.0)
-(set-face-attribute ; アクティブなタブ
-  'tabbar-selected nil
-   :background "yellow"
-   :foreground "red"
-   :weight 'bold
-   :box nil)
-(set-face-attribute ; 非アクティブなタブ
-  'tabbar-unselected nil
-   :background "gray"
-   :foreground "black"
-   :box nil)
 
+;; 外観変更
+(set-face-attribute
+ 'tabbar-default nil
+ :family "MeiryoKe_Gothic"
+ :background "#34495E"
+ :foreground "#EEEEEE"
+ :height 0.95
+ )
+(set-face-attribute
+ 'tabbar-unselected nil
+ :background "#34495E"
+ :foreground "#EEEEEE"
+ :box nil
+)
+(set-face-attribute
+ 'tabbar-selected nil
+ :background "#E74C3C"
+ :foreground "#EEEEEE"
+ :box nil)
+(set-face-attribute
+ 'tabbar-button nil
+ :box nil)
+(set-face-attribute
+ 'tabbar-separator nil
+ :height 1.7)
 
