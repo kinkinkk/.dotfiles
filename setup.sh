@@ -1,5 +1,5 @@
 #!/bin/bash
-CARRENT_DIR=`dirname $0`
+CARRENT_DIR=~/.dotfiles
 
 if [ -e ${CARRENT_DIR}/.zsh ]; then
     echo "no proc"
