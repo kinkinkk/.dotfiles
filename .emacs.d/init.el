@@ -13,6 +13,13 @@
  '(current-language-environment "Japanese")
  '(custom-enabled-themes (quote (tango-dark)))
  '(display-battery-mode t)
+ '(initial-frame-alist
+   (quote
+	((height . 65)
+	 (width . 200)
+	 (top . 8)
+	 (left . 10)
+	 (vertical-scroll-bars . right))))
  '(tab-width 4)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -20,8 +27,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ricty for Powerline" :foundry "unknown" :slant normal :weight normal :height 108 :width normal)))))
-
+ '(default ((t (:family "Ricty" :foundry "unknown" :slant normal :weight normal :height 165 :width normal)))))
+ 
 ;; 追加el読み込みディレクトリ
 ;;(add-to-list 'load-path "~/.emacs.d/site-lisp")
 (setq load-path
@@ -35,7 +42,9 @@
 ;;(require 'auto-install)
 ;;(setq auto-install-directory "~/.emacs.d/auto-install/")
 ;;(auto-install-update-emacswiki-package-name t)
-;;(auto-install-compatibility-setup)             ; 互換性確保
+;;(auto-install-compatibility-setup)             ; 互換性確
+
+
 
 ;; auto-complete
 (require 'auto-complete)
