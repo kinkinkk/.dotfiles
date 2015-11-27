@@ -66,7 +66,7 @@ export EDITOR='emacs'
 # fi
 
 # Compilation flags
-export ARCHFLAGS="-arch x86_64"
+#export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -79,9 +79,11 @@ export ARCHFLAGS="-arch x86_64"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll='ls -lG --color=auto'
-alias ls='ls -F --color=auto'
+alias ll='ls -lG'
+alias ls='ls -F'
 alias vi='vim'
+alias emacs='TERM=xterm-256color /usr/local/bin/emacs'
+alias git='/usr/local/bin/git'
 alias em='emacs -nw'
 
 if [ $SHLVL = 1 ]; then
@@ -109,7 +111,11 @@ source $ZSH/../.zaw/zaw.zsh
 
 setopt transient_rprompt
 
-
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
 
 # 追加分
 ## 補完機能の強化
@@ -128,6 +134,28 @@ setopt auto_pushd
 ## 同じディレクトリを pushd しない
 setopt pushd_ignore_dups
 
+## zshrc
+bindkey '^[d' zaw-cdr
+bindkey '^[g' zaw-git-branches
+bindkey '^[@' zaw-gitdir
+
+function zaw-src-gitdir () {
+	_dir=$(git rev-parse --show-cdup 2>/dev/null)
+	if [ $? -eq 0 ]
+	then
+		candidates=( $(git ls-files ${_dir} | perl -MFile::Basename -nle \
+												   '$a{dirname $_}++; END{delete $a{"."}; print for sort keys %a}') )
+	fi
+	actions=("zaw-src-gitdir-cd")
+	act_descriptions=("change directory in git repos")
+}
+
+function zaw-src-gitdir-cd () {
+	BUFFER="cd $1"
+	zle accept-line
+}
+zaw-register-src -n gitdir zaw-src-gitdir
+
 if [ -z $TMUX ]; then
-    archey & 
+#    archey & 
 fi
