@@ -82,8 +82,12 @@ export EDITOR='emacs'
 alias ll='ls -lG'
 alias ls='ls -F'
 alias vi='vim'
-alias emacs='TERM=xterm-256color /usr/local/bin/emacs'
-alias git='/usr/local/bin/git'
+case ${OSTYPE} in
+  darwin*)
+    # ここに Mac 向けの設定
+    alias emacs='TERM=xterm-256color /usr/local/bin/emacs'
+	alias git='/usr/local/bin/git'
+esac
 alias em='emacs -nw'
 
 if [ $SHLVL = 1 ]; then
@@ -135,7 +139,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 ## zshrc
-bindkey '^[d' zaw-cdr
+bindkey '^[h' zaw-cdr
 bindkey '^[g' zaw-git-branches
 bindkey '^[@' zaw-gitdir
 
