@@ -1,7 +1,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.zsh/.oh-my-zsh
-
+export ZAW=$HOME/.zsh/.zaw
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -111,7 +111,7 @@ setopt EXTENDED_HISTORY
 
 function history-all { history -E 1 }
 function mkcd(){mkdir -p $1 && cd $1}
-source $ZSH/../.zaw/zaw.zsh
+
 
 setopt transient_rprompt
 
@@ -139,7 +139,8 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 ## zshrc
-bindkey '^[h' zaw-cdr
+source $ZAW/zaw.zsh
+bindkey '^h' zaw-cdr
 bindkey '^[g' zaw-git-branches
 bindkey '^[@' zaw-gitdir
 
