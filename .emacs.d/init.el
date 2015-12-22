@@ -13,6 +13,7 @@
  '(current-language-environment "Japanese")
  '(custom-enabled-themes (quote (tango-dark)))
  '(display-battery-mode t)
+ '(ecb-options-version "2.40")
  '(initial-frame-alist
    (quote
 	((height . 65)
@@ -35,6 +36,7 @@
 	  (append
 	   (list
 		(expand-file-name "~/.emacs.d/site-lisp/") ;追加
+		(expand-file-name "~/.emacs-lisps/ecb/")
 		(expand-file-name "~/.emacs.d/auto-install/"))
 	          load-path))
 
@@ -141,3 +143,13 @@
  'tabbar-separator nil
  :height 1.7)
 
+
+;; ecb
+(require 'ecb)
+
+(defun ecb-toggle ()
+  (interactive)
+  (if ecb-minor-mode
+	  (ecb-deactivate)
+	(ecb-activate)))
+(global-set-key [f2] 'ecb-toggle)
