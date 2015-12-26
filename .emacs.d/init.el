@@ -152,4 +152,15 @@
   (if ecb-minor-mode
 	  (ecb-deactivate)
 	(ecb-activate)))
-(global-set-key [f2] 'ecb-toggle)
+(global-set-key (kbd "C-c t") 'ecb-toggle)
+
+;;; show/hide ecb window
+(global-set-key (kbd "C-c :") 'ecb-show-ecb-windows)
+(global-set-key (kbd "C-c ;") 'ecb-hide-ecb-windows)
+;;; quick navigation between ecb windows
+(global-set-key (kbd "C-c e") 'ecb-goto-window-edit1)
+(global-set-key (kbd "C-c d") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-c s") 'ecb-goto-window-sources)
+(global-set-key (kbd "C-c m") 'ecb-goto-window-methods)
+(global-set-key (kbd "C-c c") 'ecb-goto-window-compilation)
+(global-set-key (kbd "C-c h") 'ecb-goto-window-history)
