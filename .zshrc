@@ -50,6 +50,14 @@ plugins=(git osx)
 
 #source $ZSH/oh-my-zsh.sh
 [[ "$TERM" != "dumb" ]] && source $ZSH/oh-my-zsh.sh
+if [[ "$TERM" == "dumb" ]]; then
+	unsetopt zle
+	unsetopt prompt_cr
+	unsetopt prompt_subst
+	unfunction precmd
+	unfunction preexec
+PS1='$ '
+fi
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
