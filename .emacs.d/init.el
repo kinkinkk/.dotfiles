@@ -143,6 +143,9 @@
  'tabbar-separator nil
  :height 1.7)
 
+;; tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
 
 ;; ecb
 (require 'ecb)
